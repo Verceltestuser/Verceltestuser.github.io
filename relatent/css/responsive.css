@@ -1,0 +1,21 @@
+#small{
+    display: none;
+}
+
+@media (max-width: 1150px) {
+    #clock,
+    #date,
+    .login-form,
+    .greeting,
+    #weather,
+    #search,
+    #todo-form,
+    #todo-list,
+    #quote,
+    .location{
+        display: none;
+    }
+    #small{
+        display: block;
+    }
+}

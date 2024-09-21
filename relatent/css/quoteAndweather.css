@@ -1,0 +1,53 @@
+#quote{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: end;
+    align-items: center;
+    bottom: 0;
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    transition: opacity .5s ease-in-out;
+}
+
+.au{
+    color: #ddd;
+}
+
+
+#weather {
+    font-family: "nanum gothic", sans-serif;
+    position: absolute;
+    font-size: 12px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    transition: opacity .4s ease-in-out;
+}
+  
+
+
+#weather:hover{
+    opacity: .85;
+}
+
+
+a{
+    all: unset;
+}
+
+#locate{
+    font-size: 15px;
+    text-align: left;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    opacity : .85;
+    transition: opacity .5s ease-in-out;
+}
+
+#locate:hover{
+    opacity: 1;
+}
