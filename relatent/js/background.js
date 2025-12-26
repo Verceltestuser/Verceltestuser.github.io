@@ -22,7 +22,8 @@ function loadBackground() {
     } else {
       body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url(${
         parsedImage.url
-      })`;
+      })`
+      body.style.backgroundSize = `cover`;
       if(parsedImage.name !== null){
         locate.innerText = parsedImage.name
         document.querySelector('.location').addEventListener("click", ()=>{
@@ -42,7 +43,7 @@ function saveBackground(imageUrl, city, country, name) {
   const expirationDate = Date.now() //UNIX TIME
   const imageObject = {
     url: imageUrl,
-    expiresOn: expirationDate + 60*60*24,
+    expiresOn: expirationDate + 1000*60*60*24,
     city,
     country,
     name
@@ -77,3 +78,4 @@ function initApp() {
 }
 
 initApp();
+
