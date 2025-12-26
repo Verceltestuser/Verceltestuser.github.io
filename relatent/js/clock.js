@@ -27,9 +27,10 @@ setInterval(()=>{
 },250)
 
 setInterval(()=>{
-    const data = new Date;
+    const data = new Date();
     const month = months[data.getMonth()]
     const day = data.getDate()
     const year = data.getFullYear()
     dateElement.innerText = `${month} ${day}, ${year}`
 },1000)
+
