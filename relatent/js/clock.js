@@ -10,9 +10,11 @@ const months = [
     "April",
     "May",
     "June",
+    "July",
     "August",
     "September",
     "October",
+    "November",
     "December"
 ]
 
@@ -26,7 +28,7 @@ setInterval(()=>{
 
 setInterval(()=>{
     const data = new Date;
-    const month = months[data.getMonth() - 1]
+    const month = months[data.getMonth()]
     const day = data.getDate()
     const year = data.getFullYear()
     dateElement.innerText = `${month} ${day}, ${year}`
