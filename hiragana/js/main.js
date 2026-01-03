@@ -1,0 +1,90 @@
+const langSelect = document.getElementById('langSelect');
+
+const translations = {
+    en: {
+        title: "<span>Hiragana</span> Test.",
+        subtitle: "Check your <span>Japanese writing system ability</span>.",
+        start: "Get Started",
+        learn: "Learn Hiragana"
+    },
+    es: {
+        title: "Prueba de <span>Hiragana</span>.",
+        subtitle: "Pon a prueba tu <span>habilidad con el japonés</span>.",
+        start: "Comenzar",
+        learn: "Aprender Hiragana"
+    },
+    fr: {
+        title: "Test de <span>Hiragana</span>.",
+        subtitle: "Vérifiez votre <span>maîtrise du système japonais</span>.",
+        start: "Démarrer",
+        learn: "Apprendre l'Hiragana"
+    },
+    de: {
+        title: "<span>Hiragana</span> Test.",
+        subtitle: "Prüfen Sie Ihre <span>japanischen Sprachkenntnisse</span>.",
+        start: "Loslegen",
+        learn: "Hiragana lernen"
+    },
+    ar: {
+        title: "اختبار <span>الهيراغانا</span>.",
+        subtitle: "تحقق من <span>قدرتك على نظام الكتابة الياباني</span>.",
+        start: "ابدأ الآن",
+        learn: "تعلم الهيراغانا"
+    },
+    ko: {
+        title: "<span>히라가나</span> 테스트.",
+        subtitle: "당신의 <span>일본어 쓰기 능력</span>을 확인하세요.",
+        start: "시작하기",
+        learn: "히라가나 배우기"
+    },
+    zh: {
+        title: "<span>平假名</span>测试.",
+        subtitle: "检查你的<span>日语书写系统能力</span>.",
+        start: "开始",
+        learn: "学习平假名"
+    },
+    ja: {
+        title: "<span>ひらがな</span>テスト.",
+        subtitle: "あなたの<span>日本語能力</span>をチェックしましょう.",
+        start: "スタート",
+        learn: "ひらがなを学ぶ"
+    }
+};
+
+function updateLanguage(lang) {
+    const t = translations[lang];
+    document.getElementById('main-title').innerHTML = t.title;
+    document.getElementById('sub-title').innerHTML = t.subtitle;
+    document.getElementById('btn-start').innerText = t.start;
+    document.getElementById('btn-learn').innerText = t.learn;
+    document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    // SAVE TO LOCAL STORAGE
+    localStorage.setItem('user_lang', lang);
+}
+
+langSelect.addEventListener('change', (e) => updateLanguage(e.target.value));
+
+// On Load: Check storage or default to 'en'
+window.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('user_lang') || 'en';
+    langSelect.value = savedLang;
+    updateLanguage(savedLang);
+});
+
+document.getElementById('btn-learn').addEventListener('click', (e) => {
+    // Prevent the default <a> link behavior so our JS takes over
+    e.preventDefault(); 
+    
+    // Get the current language from the dropdown right now
+    const currentLang = document.getElementById('langSelect').value;
+    // Redirect to the specific language Wikipedia
+    if(currentLang === "ar"){
+        window.location.href = "https://ar.wikipedia.org/wiki/%D9%87%D9%8A%D8%B1%D8%A7%D8%BA%D8%A7%D9%86%D8%A7"
+    }else{
+        if(currentLang === "zh"){
+            window.location.href = `https://zh.wikipedia.org/wiki/平仮名`
+        }else{
+            window.location.href = `https://${currentLang}.wikipedia.org/wiki/Hiragana`;
+        }
+    }
+});
